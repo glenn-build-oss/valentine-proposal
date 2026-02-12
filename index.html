@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Question 💕</title>
+    <title>A Special Message 💕</title>
     <style>
         * {
             margin: 0;
@@ -40,6 +40,53 @@
             animation: bounce 2s infinite;
         }
 
+        .message {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .signature {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .next-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        /* Proposal Page Styles */
         .question {
             font-size: 1.5rem;
             color: #333;
@@ -123,20 +170,6 @@
             transform: scale(1);
         }
 
-        .hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .heart {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.3);
-            animation: float 6s infinite ease-in-out;
-        }
-
         .dancing-emoji {
             font-size: 3rem;
             animation: dance 1s infinite;
@@ -153,6 +186,25 @@
 
         .confetti.show {
             animation: confetti-fall 3s ease-out;
+        }
+
+        .cheek-bite {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cheek-bite.show {
+            animation: biteAnimation 1s ease-out;
+        }
+
+        .hidden {
+            display: none;
         }
 
         @keyframes bounce {
@@ -184,6 +236,30 @@
             }
         }
 
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes biteAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8) rotate(-5deg);
+            }
+        }
+
         @keyframes dance {
             0%, 100% {
                 transform: rotate(-5deg) scale(1);
@@ -201,70 +277,6 @@
             100% {
                 transform: translateY(100vh) rotate(720deg);
                 opacity: 0;
-            }
-        }
-
-        @keyframes celebrate {
-            0% {
-                transform: translate(-50%, -50%) scale(0) rotate(0deg);
-                opacity: 0;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1) rotate(360deg);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes sparkle {
-            0% {
-                transform: translateY(0) scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) scale(1);
-                opacity: 0;
-            }
-        }
-
-        @keyframes explode {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.5);
-                opacity: 0;
-            }
-        }
-
-        @keyframes wiggle {
-            0%, 100% {
-                transform: translateX(-50%) rotate(-5deg);
-            }
-            25% {
-                transform: translateX(-50%) rotate(5deg);
-            }
-            75% {
-                transform: translateX(-50%) rotate(-5deg);
-            }
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
             }
         }
 
@@ -288,47 +300,55 @@
             }
         }
 
-        @keyframes petalFall {
+        @keyframes fall {
             to {
-                transform: translateY(100vh) translateX(50px) rotate(360deg);
-                opacity: 0.8;
+                transform: translateY(100vh) rotate(360deg);
             }
         }
 
-        @keyframes epicEntrance {
+        @keyframes explode {
             0% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0.3) rotate(-180deg);
-            }
-            50% {
+                transform: translate(-50%, -50%) scale(1);
                 opacity: 1;
-                transform: translate(-50%, -50%) scale(1.1) rotate(90deg);
             }
             100% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.5);
+                opacity: 0;
             }
         }
 
-        .share-info {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            color: #666;
-            z-index: 5;
+        @keyframes sparkle {
+            0% {
+                transform: translateY(0) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
     <div class="hearts" id="hearts"></div>
     
-    <div class="container">
-        <h1>💕 Valentine's Special 💕</h1>
+    <!-- Intro Page -->
+    <div id="introPage" class="container">
+        <h1>💕 A Special Message 💕</h1>
+        <div class="message">
+            Umm hi... this is Glenn! 😊<br>
+            I sat my ass down to type a bunch of codes<br>
+            to ask you this question... sooooo here it is! 🥰
+        </div>
+        <div class="signature">
+            - Glenn 💕
+        </div>
+        <button class="next-btn" onclick="goToProposal()">Next →</button>
+    </div>
+
+    <!-- Proposal Page -->
+    <div id="proposalPage" class="container hidden">
+        <h1>💕 A Special Moment 💕</h1>
         <div class="dancing-emoji">🌹</div>
         <p class="question">Life is better with you in it...<br>Would you do me the honor of being my Valentine? 💕</p>
         
@@ -340,9 +360,7 @@
         <div id="speechBubble" class="speech-bubble">Nooo stop trying to catch me! 😜🏃‍♀️</div>
     </div>
 
-    <div class="share-info">
-        💝 Share this link with your Valentine! 💝
-    </div>
+    <div id="cheekBite" class="cheek-bite">😗💋</div>
 
     <script>
         // Create floating hearts
@@ -361,10 +379,19 @@
             }
         }
 
-        function handleYes() {
-            // Ultimate celebration!
-            const container = document.querySelector('.container');
+        function goToProposal() {
+            // Show cheek bite animation
+            const cheekBite = document.getElementById('cheekBite');
+            cheekBite.classList.add('show');
             
+            setTimeout(() => {
+                // Hide intro, show proposal
+                document.getElementById('introPage').classList.add('hidden');
+                document.getElementById('proposalPage').classList.remove('hidden');
+            }, 1000);
+        }
+
+        function handleYes() {
             // Create epic celebration message
             const epicMsg = document.createElement('div');
             epicMsg.style.cssText = `
@@ -419,7 +446,7 @@
             document.body.appendChild(elegantHearts);
             
             // Subtle glow effect
-            container.style.boxShadow = '0 20px 60px rgba(139, 69, 19, 0.15)';
+            document.querySelector('#proposalPage').style.boxShadow = '0 20px 60px rgba(139, 69, 19, 0.15)';
             
             // Elegant background change
             document.body.style.background = 'linear-gradient(135deg, #f5f5dc 0%, #ffe4e1 50%, #ffdab9 100%)';
@@ -434,7 +461,7 @@
 
         function moveButtonAway() {
             const noBtn = document.querySelector('.btn-no');
-            const container = document.querySelector('.container');
+            const container = document.querySelector('#proposalPage');
             const speechBubble = document.getElementById('speechBubble');
             const containerRect = container.getBoundingClientRect();
             
@@ -485,7 +512,7 @@
                         top: -20px;
                         z-index: 999;
                         pointer-events: none;
-                        animation: petalFall 4s linear forwards;
+                        animation: fall 4s linear forwards;
                     `;
                     petal.innerHTML = '🌹';
                     document.body.appendChild(petal);
