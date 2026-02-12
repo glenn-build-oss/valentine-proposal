@@ -368,20 +368,26 @@
             // Create epic celebration message
             const epicMsg = document.createElement('div');
             epicMsg.style.cssText = `
-                position: absolute;
+                position: fixed;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 font-family: 'Georgia', serif;
-                font-size: 2.5rem;
-                color: #e91e63;
+                font-size: 2rem;
+                color: #8b4513;
                 text-align: center;
                 font-style: italic;
-                z-index: 1000;
-                animation: epicEntrance 2s ease-out;
+                z-index: 2000;
+                animation: fadeInScale 2s ease-out;
+                background: rgba(255, 253, 250, 0.95);
+                padding: 2.5rem;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+                border: 1px solid #d4a574;
+                max-width: 400px;
             `;
-            epicMsg.innerHTML = 'Wonderful! 💕<br>This will be magical ✨';
-            container.appendChild(epicMsg);
+            epicMsg.innerHTML = 'Thank you for making this Valentine\'s Day special.<br>I look forward to celebrating with you. 💕';
+            document.body.appendChild(epicMsg);
             
             // MASSIVE confetti shower
             createMassiveConfetti();
@@ -398,34 +404,25 @@
             // Elegant floating hearts
             const elegantHearts = document.createElement('div');
             elegantHearts.style.cssText = `
-                position: absolute;
+                position: fixed;
                 bottom: 30px;
                 left: 50%;
                 transform: translateX(-50%);
-                font-size: 2.5rem;
-                animation: gentleFloat 3s ease-in-out infinite;
+                font-size: 1.8rem;
+                animation: gentleFloat 4s ease-in-out infinite;
+                z-index: 1999;
+                color: #8b4513;
+                font-family: 'Georgia', serif;
+                letter-spacing: 0.2rem;
             `;
-            elegantHearts.innerHTML = '💕 🌹 💕';
-            container.appendChild(elegantHearts);
+            elegantHearts.innerHTML = '💕 With love, always 💕';
+            document.body.appendChild(elegantHearts);
             
-            // Epic glow effect
-            container.style.boxShadow = '0 20px 80px rgba(233, 30, 99, 0.4)';
+            // Subtle glow effect
+            container.style.boxShadow = '0 20px 60px rgba(139, 69, 19, 0.15)';
             
-            // Background celebration mode
-            document.body.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #667eea 100%)';
-            
-            // Add dancing cat for fun
-            const dancingCat = document.createElement('div');
-            dancingCat.style.cssText = `
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                font-size: 3rem;
-                animation: dance 1s infinite;
-                z-index: 1001;
-            `;
-            dancingCat.innerHTML = '🐱💃';
-            container.appendChild(dancingCat);
+            // Elegant background change
+            document.body.style.background = 'linear-gradient(135deg, #f5f5dc 0%, #ffe4e1 50%, #ffdab9 100%)';
         }
 
         function handleNo() {
